@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ thing.name }}{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>{{ thing.name }}</h1>
+
+        {% if thing.inventoryId %}
+            <h2>{{ thing.inventoryId }}</h2>
+        {% endif %}
+
+        <div style="padding: 0 15% 0 15%;">
+            {% if thing.image %}
+                <img src="{{ vich_uploader_asset(thing, 'imageFile') }}"/>
+            {% endif %}
+        </div>
+        <br>
+        {% if thing.wikiLink %}
+            <p><b>Wiki Link: </b>
+            <a href="{{ thing.wikiLink }}">{{ thing.wikiLink }}</a>
+        {% endif %}
+
+        {% if thing.description %}
+            <p><b>Beschreibung: </b><br>
+            <p> {{ thing.description }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

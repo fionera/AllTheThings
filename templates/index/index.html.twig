@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Übersicht{% endblock %}
+
+{% block body %}
+    {% for thing in things %}
+        <div href="{{ path('thing', {'id': thing.inventoryID}) }}" class="tool">
+            <h1>{{ thing.name }}</h1>
+            <img src="{{ vich_uploader_asset(thing, 'imageFile') }}"/>
+            <p><b>Beschreibung: </b></p>
+            <p>{{ thing.description }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
